@@ -1,0 +1,6 @@
+<h1>Add a new worker</h1>
+<%= simple_form_for(@worker) do |f| %>
+<%= f.input :first_name %>
+<%= f.input :status, collection: [ "medic", "interne", "interim" ] %>
+<%= f.submit "Create!", class: "btn btn-primary form-control" %>
+<% end %>

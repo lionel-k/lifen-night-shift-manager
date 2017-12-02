@@ -1,0 +1,22 @@
+<h2>Wages</h2>
+<% workers = @result[:workers] %>
+<ol>
+  <% workers.each do |worker| %>
+  <li><%= Worker.find(worker[:id]).first_name %> - <%= worker[:price] %>€</li>
+  <% end %>
+</ol>
+
+<h2>Commission</h2>
+<ol>
+  <li>
+    PDG Fee: <%= @result[:commission][:pdg_fee] %>€
+  </li>
+  <li>
+    Interim Shifts: <%= @result[:commission][:interim_shifts] %>
+  </li>
+</ol>
+
+<hr>
+<p>
+  <%= link_to "Back", root_path %>
+</p>

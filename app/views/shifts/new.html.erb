@@ -1,0 +1,6 @@
+<h1>Add a new shift</h1>
+<%= simple_form_for(@shift) do |f| %>
+<%= f.date_field :start_date, class: "form-control" %>
+<%= f.association :worker, collection: Worker.all.order(:first_name), label_method: :first_name,prompt: "Choose a worker" %>
+<%= f.submit "Create!", class: "btn btn-primary form-control" %>
+<% end %>

@@ -1,2 +1,31 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6">
+      <h2>All Shifts</h2>
+      <ol>
+        <% Shift.order("start_date asc").all.each do |shift| %>
+        <li><%= shift.start_date %> by <%= shift.worker.first_name %></li>
+        <% end %>
+      </ol>
+      <%= link_to "Add a new shift", new_shift_path %>
+    </div>
+
+    <div class="col-xs-6">
+      <h2>All Workers</h2>
+      <ol>
+        <% Worker.order("first_name asc").all.each do |worker| %>
+        <li><%= worker.first_name %> - Status: <%= worker.status %> <%= link_to "Edit", edit_worker_path(worker) %></li>
+        <% end %>
+      </ol>
+      <%= link_to "Add a new worker", new_worker_path %>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+<p>
+  <%= link_to "Compute Wages", compute_path, class: "btn btn-primary" %>
+</p>
+
+<%= @result%>
